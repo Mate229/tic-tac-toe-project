@@ -45,8 +45,9 @@ function Gameboard() {
 function createPlayer(name, mark) {
     const getPlayerName = () => name;
     const getPlayerMark = () => mark;
+    let score = 0;
 
-    return {getPlayerName, getPlayerMark};
+    return {getPlayerName, getPlayerMark, score};
 };
 
 // GameFlow Module
@@ -113,6 +114,7 @@ function GameFlow() {
             ((newGame.getBoard()[0][2] !== "") && (newGame.getBoard()[0][2] === newGame.getBoard()[1][1]) && (newGame.getBoard()[0][2] === newGame.getBoard()[2][2]))
         ) {
             alert(`Game Over! ${activePlayer.getPlayerName()} wins`);
+            activePlayer.score++;
             newGame.resetBoard();
         } else if (newGame.getBoard().flat().every((item) => item !== "") ) {
             // the flat() function here will make the board to one big array ( each row of the board will turn to 3 items inside the big board);
@@ -132,7 +134,9 @@ function GameFlow() {
     return {
         playRound,
         getBoard: newGame.getBoard,
-        getActivePlayer
+        getActivePlayer,
+        playerOne,
+        playerTwo
     };
 };
 
@@ -160,6 +164,9 @@ function DisplayGame() {
 
         const status = document.querySelector("#status");
         status.textContent = `${activePlayer.getPlayerName()}'s turn`; // Tells the active player it's his turn to play..
+
+        const score = document.querySelector("#score");
+        score.textContent = `${game.playerOne.getPlayerName()}: ${game.playerOne.score}  vs  ${game.playerTwo.getPlayerName()}: ${game.playerTwo.score}`
 
         // Draw the board as it's presently on the display..
         for (let row of board) {
