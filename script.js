@@ -1,3 +1,5 @@
+let isCellChoosen = false;
+
 // Gameboard module;
 function Gameboard() {
     const rows = 3;
@@ -19,9 +21,11 @@ function Gameboard() {
     function setMark(row, column, mark) {
 
         if (board[row][column] !== "") {
+            isCellChoosen = true;
             return;
         } else {
             board[row][column] = mark;
+            isCellChoosen = false;
         };
     };
 
@@ -52,8 +56,8 @@ function GameFlow() {
     const newGame = Gameboard();
 
     // Create the two players for the game;
-    const playerOne = createPlayer("playerOne", "O");
-    const playerTwo = createPlayer("playerTwo", "X");
+    const playerOne = createPlayer(prompt("Enter first player name: "), "O");
+    const playerTwo = createPlayer(prompt("Enter second player name: "), "X");
 
     // This function will allow me to get the cell in which each player want to draw his mark;
     // function getPlayerCell(player) {
@@ -108,14 +112,18 @@ function GameFlow() {
             ((newGame.getBoard()[0][0] !== "") && (newGame.getBoard()[0][0] === newGame.getBoard()[1][1]) && (newGame.getBoard()[0][0] === newGame.getBoard()[2][2])) ||
             ((newGame.getBoard()[0][2] !== "") && (newGame.getBoard()[0][2] === newGame.getBoard()[1][1]) && (newGame.getBoard()[0][2] === newGame.getBoard()[2][2]))
         ) {
-            console.log(`Game Over! ${activePlayer.getPlayerName()} wins`);
+            alert(`Game Over! ${activePlayer.getPlayerName()} wins`);
             newGame.resetBoard();
         } else if (newGame.getBoard().flat().every((item) => item !== "") ) {
             // the flat() function here will make the board to one big array ( each row of the board will turn to 3 items inside the big board);
-            console.log(`Game Over! It's a draw`);
+            alert(`Game Over! It's a draw`);
             newGame.resetBoard();
         } else {
-            switchPlayerTurn();
+            if (isCellChoosen === true) {
+                return;
+            } else {
+                switchPlayerTurn();
+            }
         };
     };
 
@@ -149,6 +157,9 @@ function DisplayGame() {
         const board = game.getBoard(); // Get board state of the game;
 
         const activePlayer = game.getActivePlayer(); // Calls the active player to come
+
+        const status = document.querySelector("#status");
+        status.textContent = `${activePlayer.getPlayerName()}'s turn`; // Tells the active player it's his turn to play..
 
         // Draw the board as it's presently on the display..
         for (let row of board) {
