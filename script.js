@@ -138,26 +138,34 @@ function GameFlow() {
 //     };
 
 function DisplayGame() {
+    // Initialize the game
     const game = GameFlow();
 
     const container = document.querySelector("#container");
 
     function updateScreen() {
-        container.innerHTML = "";
+        container.innerHTML = ""; // Cleans the container before reprinting the board;
 
-        const board = game.getBoard();
+        const board = game.getBoard(); // Get board state of the game;
 
-        const activePlayer = game.getActivePlayer();
+        const activePlayer = game.getActivePlayer(); // Calls the active player to come
 
+        // Draw the board as it's presently on the display..
         for (let row of board) {
             for (let i = 0; i < row.length; i++) {
                 const square = document.createElement("div");
+
+                // These two attributes are set on each div to know their exact position in the board;
+                // They will be used to call the playround function as param, so the plaround will know
+                // which cell each player is chosing; 
                 square.setAttribute("board-row", board.indexOf(row));
                 square.setAttribute("board-col", i);
                 square.classList.add("square");
 
-                square.textContent = row[i];
+                square.textContent = row[i]; // Update cell on screen with player sign.
 
+                // The magic happens here. The listener is attached before appending the square
+                // to its parent, in order to keep th event after an sreenupdate.
                 square.addEventListener("click", () => {
                     const row = square.getAttribute("board-row");
                     const col = square.getAttribute("board-col");
@@ -183,7 +191,7 @@ function DisplayGame() {
     //     });
     // });
 
-    updateScreen();
+    updateScreen(); // The game starts here now..
 }
 
 DisplayGame();
