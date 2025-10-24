@@ -60,14 +60,6 @@ function GameFlow() {
     const playerOne = createPlayer(prompt("Enter first player name: "), "O");
     const playerTwo = createPlayer(prompt("Enter second player name: "), "X");
 
-    // This function will allow me to get the cell in which each player want to draw his mark;
-    // function getPlayerCell(player) {
-    //     const row = prompt(`${player}, choose your cell row: `);
-    //     const col = prompt(`${player}, choose your cell column: `);
-
-    //     return {player, row, col}
-    // };
-
     // I declare this variable to kepp track of the active player(to know which player's turn it's);
     let activePlayer = playerOne;
 
@@ -84,12 +76,6 @@ function GameFlow() {
 
     // The gameround here;
     function playRound(row, col) {
-
-        // We're playing in the console for now, so i need to let each player knows his turn;
-        // alert(`It's ${activePlayer.getPlayerName()}'s turn`);
-
-        // Active player choose his cell;
-        // const playerCell = getPlayerCell(activePlayer.getPlayerName());
 
         // The gameboard is updated with the player's choice;
         newGame.setMark(row, col, activePlayer.getPlayerMark());
@@ -129,8 +115,6 @@ function GameFlow() {
         };
     };
 
-    // playRound(); // First round is starting here...
-
     return {
         playRound,
         getBoard: newGame.getBoard,
@@ -139,15 +123,6 @@ function GameFlow() {
         playerTwo
     };
 };
-
-// const game = GameFlow();
-
-// const container = document.querySelector("#container");
-
-// for (let i = 0; i < 9; i++) {
-//         const square = document.createElement("div");
-//         container.appendChild(square);
-//     };
 
 function DisplayGame() {
     // Initialize the game
@@ -201,18 +176,6 @@ function DisplayGame() {
             }
         };
     };
-
-
-    // const cells = document.querySelectorAll(".square");
-    // cells.forEach(cell => {
-    //     cell.addEventListener("click", () => {
-    //         const row = cell.getAttribute("board-row");
-    //         const col = cell.getAttribute("board-col");
-
-    //         game.playRound(row, col);
-    //         updateScreen();
-    //     });
-    // });
 
     updateScreen(); // The game starts here now..
 }

@@ -71,14 +71,18 @@ section {
 footer {
     position: absolute;
     bottom: 0;
+    left: 0;
     background-color: var(--prin-clr);
     width: 100%;
-    text-align: center;
+    justify-content: center;
     color: white;
+    display: flex;
+    align-items: center;
 }
 
 h5 {
-    margin-top: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 a {
