@@ -100,3 +100,15 @@ a:hover {
 * {
     transition: all .3s ease;
 }
+
+.start {
+    margin-bottom: 20px;
+}
+
+.start:hover {
+    width: 48px;
+    height: 48px;
+    background-color: var(--acc-clr);
+    padding: 10px;
+    border-radius: 50%;
+}

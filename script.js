@@ -217,4 +217,5 @@ function DisplayGame() {
     updateScreen(); // The game starts here now..
 }
 
-DisplayGame();
+const startGame = document.querySelector(".start");
+startGame.addEventListener("click", DisplayGame);
