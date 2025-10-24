@@ -43,6 +43,8 @@ section {
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    font-weight: 700;
+    font-size: 3rem;
 }
 
 .square:hover {

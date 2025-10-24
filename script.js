@@ -99,12 +99,12 @@ function GameFlow() {
             ((newGame.getBoard()[0][0] !== "") && (newGame.getBoard()[0][0] === newGame.getBoard()[1][1]) && (newGame.getBoard()[0][0] === newGame.getBoard()[2][2])) ||
             ((newGame.getBoard()[0][2] !== "") && (newGame.getBoard()[0][2] === newGame.getBoard()[1][1]) && (newGame.getBoard()[0][2] === newGame.getBoard()[2][2]))
         ) {
-            alert(`Game Over! ${activePlayer.getPlayerName()} wins`);
+            alert(`Round Over! ${activePlayer.getPlayerName()} wins`);
             activePlayer.score++;
             newGame.resetBoard();
         } else if (newGame.getBoard().flat().every((item) => item !== "") ) {
             // the flat() function here will make the board to one big array ( each row of the board will turn to 3 items inside the big board);
-            alert(`Game Over! It's a draw`);
+            alert(`Round Over! It's a draw`);
             newGame.resetBoard();
         } else {
             if (isCellChoosen === true) {
