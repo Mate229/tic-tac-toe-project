@@ -165,8 +165,13 @@ function DisplayGame() {
         const status = document.querySelector("#status");
         status.textContent = `${activePlayer.getPlayerName()}'s turn`; // Tells the active player it's his turn to play..
 
-        const score = document.querySelector("#score");
-        score.textContent = `${game.playerOne.getPlayerName()}: ${game.playerOne.score}  vs  ${game.playerTwo.getPlayerName()}: ${game.playerTwo.score}`
+        const scoreOne = document.querySelector("#score-one");
+        scoreOne.textContent = `${game.playerOne.getPlayerName()}: ${game.playerOne.score}`
+
+        const scoreTwo = document.querySelector("#score-two");
+        scoreTwo.textContent = `${game.playerTwo.getPlayerName()}: ${game.playerTwo.score}`
+
+        
 
         // Draw the board as it's presently on the display..
         for (let row of board) {
