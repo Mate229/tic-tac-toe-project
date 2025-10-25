@@ -118,6 +118,7 @@ function GameFlow() {
     return {
         playRound,
         getBoard: newGame.getBoard,
+        resetBoard: newGame.resetBoard,
         getActivePlayer,
         playerOne,
         playerTwo
@@ -175,6 +176,12 @@ function DisplayGame() {
                 container.appendChild(square);
             }
         };
+
+        const cleanBoard = document.querySelector(".clean");
+        cleanBoard.addEventListener("click", () => {
+            game.resetBoard();
+            updateScreen();
+        })
     };
 
     updateScreen(); // The game starts here now..
