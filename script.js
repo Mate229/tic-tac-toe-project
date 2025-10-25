@@ -163,6 +163,13 @@ function DisplayGame() {
 
                 square.textContent = row[i]; // Update cell on screen with player sign.
 
+                if (square.textContent === game.playerOne.getPlayerMark()) {
+                    square.classList.add("one-clr");
+                }
+                if (square.textContent === game.playerTwo.getPlayerMark()) {
+                    square.classList.add("two-clr");
+                }
+
                 // The magic happens here. The listener is attached before appending the square
                 // to its parent, in order to keep th event after an sreenupdate.
                 square.addEventListener("click", () => {

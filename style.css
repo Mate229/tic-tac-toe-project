@@ -35,9 +35,10 @@ section {
     display: grid;
     grid-template-columns: repeat(3, minmax(100px, auto));
     grid-template-rows: repeat(3, minmax(100px, auto));
+    border: 3px solid;
 }
 
-#container > div {
+.square {
     border: 1px solid black;
     display: flex;
     align-items: center;
@@ -48,7 +49,8 @@ section {
 }
 
 .square:hover {
-    background-color: var(--acc-clr);
+    border-color: var(--acc-clr);
+    box-shadow: 0 0 5px;
 }
 
 #status {
@@ -124,4 +126,12 @@ a:hover {
     padding: 10px;
     border-radius: 50%;
     transform: scale(1.2);
+}
+
+.one-clr {
+    color: var(--ply-o-clr);
+}
+
+.two-clr {
+    color: var(--ply-t-clr);
 }
